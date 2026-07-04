@@ -1,0 +1,31 @@
+baseURL = "https://go-ruby-minitest.github.io/"
+title = "go-ruby-minitest"
+disableKinds = ["taxonomy", "term", "RSS", "sitemap", "404"]
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[[params.phases]]
+  name = "Assertions & messages"
+  status = "ready"
+  blurb = "Every `assert_*`/`refute_*` (plus `flunk`/`skip`/`pass`) and — the load-bearing part — the **byte-exact** failure message each produces: the `Expected: 1\\n  Actual: 2` diff form, `mu_pp`/`mu_pp_for_diff` inspection, the custom-message prepend, and the assertion counter."
+[[params.phases]]
+  name = "Run lifecycle & results"
+  status = "ready"
+  blurb = "`Test#run` driving `before_setup`/`setup`/`after_setup` → the body → the three teardown hooks (setup+body in one `capture_exceptions`, each teardown in its own), producing a `Result` with `result_code`/`result_label`/`location`/`to_s` and the `Assertion`/`Skip`/`UnexpectedError` model."
+[[params.phases]]
+  name = "Spec DSL"
+  status = "ready"
+  blurb = "`describe`/`it`/`before`/`after`, the `it`-name morphing (`test_%04d_%s`), `let` name validation, `spec_type` selection, and the full `must_*`/`wont_*` → assertion mapping table with each method's flip rule."
+[[params.phases]]
+  name = "Mock & Stub"
+  status = "ready"
+  blurb = "`Mock` (`expect`/`verify`/call dispatch) and `Stub` (stub a singleton method for a block), including the exact `MockExpectationError` / `ArgumentError` / `NoMethodError` wording and the under-called-vs-never-called verify distinction."
+[[params.phases]]
+  name = "Differential gem oracle & coverage"
+  status = "ready"
+  blurb = "Every assertion message, `mu_pp` output, run-result tuple and mock-verify diagnostic is computed here and compared **byte-for-byte** against the live `minitest` 5.x gem; 100% coverage, `gofmt` + `go vet` clean, green across the six 64-bit Go arches and three OSes."
+[[params.phases]]
+  name = "Ruby surface (rbgo binding)"
+  status = "planned"
+  blurb = "Downstream, not part of this module: evaluating test *bodies* and the value-level operations an assertion compares (`#==`, `#=~`, `#inspect`, …) need a Ruby interpreter and live in the go-embedded-ruby consumer (rbgo), wired through the one explicit `Runtime` seam. This library formats and orchestrates; the host evaluates."
