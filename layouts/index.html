@@ -41,11 +41,9 @@
   <div class="hero"><div class="wrap">
     <div>
       <h1 class="head">go-ruby-minitest</h1>
-      <p class="sub">The core of Ruby's Minitest in pure Go — MRI-faithful failure messages and run results byte-for-byte, no cgo.</p>
-      <div class="cta">
-        <a class="btn btn-primary" href="/docs/">{{ partial "icons/book.html" . }}Documentation</a>
-        <a class="btn btn-ghost" href="https://github.com/go-ruby-minitest/minitest">{{ partial "icons/github.html" . }}GitHub</a>
-      </div>
+      <p class="sub">The core of Ruby's Minitest in {{ if partial "mantra-on.html" . }}Go{{ else }}pure Go{{ end }} — MRI-faithful failure messages and run results byte-for-byte, {{ if not (partial "mantra-on.html" $) }}no cgo{{ end }}.</p>
+      {{/* [[params.cta]] in hugo.toml: the kit renders the row */}}
+      {{ partial "cta.html" . }}
       <div class="trust">{{ if not (partial "mantra-on.html" $) }}<span class="pill">pure Go · zero cgo</span>{{ end }}<span class="pill">Minitest 5.x</span><span class="pill">assert_* / refute_*</span><span class="pill">byte-exact messages</span><span class="pill">mu_pp</span><span class="pill">run lifecycle</span><span class="pill">spec DSL</span><span class="pill">Mock &amp; Stub</span><span class="pill">gem-oracle tested</span><span class="pill">100% coverage</span><span class="pill">6 arches</span></div>
       <div class="legacy"><div class="badges">
       <a href="/docs/"><img alt="Documentation (MkDocs Material + mike)" src="https://img.shields.io/badge/docs-mkdocs--material-9B1C2E"></a>
